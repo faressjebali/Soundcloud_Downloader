@@ -52,3 +52,5 @@ jobs:
           
           # Push des modifications
           git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
