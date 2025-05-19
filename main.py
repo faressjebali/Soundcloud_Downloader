@@ -146,14 +146,4 @@ def main():
 
 
 if __name__ == "__main__":
-    # Run immediately on first launch
-    job()
-
-    # Then schedule to run every 2 minutes
-    schedule.every(2).minutes.do(job)
-
-    print("Scheduler started - will run every 2 minutes")
-
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
+    main()
