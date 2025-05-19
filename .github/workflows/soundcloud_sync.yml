@@ -1,0 +1,35 @@
+name: 🎵 SoundCloud → Dropbox
+
+# 1. Trigger every 5 minutes plus on pushes to main
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '*/5 * * * *'   # Runs every five minutes :contentReference[oaicite:5]{index=5}
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+
+    env:
+      DROPBOX_TOKEN: ${{ secrets.DROPBOX_TOKEN }}
+      SOUNDCLOUD_CLIENT_ID: ${{ secrets.SOUNDCLOUD_CLIENT_ID }}
+      USERNAME: '1339565397'  # Or move this into secrets if you wish
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests dropbox schedule
+
+      - name: Run downloader
+        run: python your_script.py
