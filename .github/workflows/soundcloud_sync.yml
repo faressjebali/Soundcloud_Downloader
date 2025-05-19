@@ -1,8 +1,8 @@
-name: 🎵 SoundCloud → Dropbox (Pure Schedule)
+name: 🎵 SoundCloud → Dropbox
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # Runs every 5 minutes, no push triggers
+    - cron: '*/5 * * * *'
 
 jobs:
   download:
@@ -13,16 +13,12 @@ jobs:
       USERNAME: '1339565397'
 
     steps:
-      - name: Checkout code (minimal)
-        uses: actions/checkout@v4  # Only needed to access main.py
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run main.py
-        run: python main.py
+      - run: pip install -r requirements.txt
+      
+      - run: python main.py
