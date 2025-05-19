@@ -32,4 +32,4 @@ jobs:
           pip install requests dropbox schedule
 
       - name: Run downloader
-        run: python your_script.py
+        run: python main.py
